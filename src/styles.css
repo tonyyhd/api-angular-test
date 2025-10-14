@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* @import "tailwindcss"; */
+/* @import "primeng/resources/primeng.css";
+@import "primeng/themes/lara-light-blue.css"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+html {
+    font-family: Inter var, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      Segoe UI Symbol;
+  }
