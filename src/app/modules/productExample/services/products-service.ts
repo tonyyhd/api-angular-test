@@ -20,6 +20,12 @@ export class ProductsService {
     const url = this.Baseurl + "productos";
     // console.log(url);
     return this.clienteHttp.get<Products[]>(url);
-    }
+  }
+
+  deleteProduct(item:any){
+    const url = `${this.Baseurl}borrar/producto?id=${item.idProducto}`;
+    return this.clienteHttp.delete<any>(url);
+
+  }
   
 }
