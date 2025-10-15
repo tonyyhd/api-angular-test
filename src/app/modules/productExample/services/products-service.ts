@@ -22,10 +22,19 @@ export class ProductsService {
     return this.clienteHttp.get<Products[]>(url);
   }
 
+  updateProduct(item: Products) {
+    const url = `${this.Baseurl}actualizar/producto`;
+    return this.clienteHttp.put<Products>(url, item);
+  }
+  createProduct(item: Products) {
+    const url = `${this.Baseurl}crear/producto`;
+    return this.clienteHttp.post<Products>(url, item);
+  }
+
   deleteProduct(item:any){
     const url = `${this.Baseurl}borrar/producto?id=${item.idProducto}`;
     return this.clienteHttp.delete<any>(url);
 
   }
-  
+
 }

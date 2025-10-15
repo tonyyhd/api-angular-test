@@ -21,6 +21,8 @@ export class TableComponent implements OnInit{
   @Input() showActions = false;
   @Output() edit = new EventEmitter<Products>();
   @Output() confirmDelete = new EventEmitter<any>();
+  @Output() editItems = new EventEmitter<any>();
+
  
   rowIndex: any;
 
@@ -37,12 +39,11 @@ export class TableComponent implements OnInit{
   ngOnChanges(changes: SimpleChanges) {
     if (changes['items']) {
       this.data.set(this.items ?? []);
-      console.log("tabla", this.items);
     }
   }
 
   onEdit(item: Products) {
-    this.edit.emit(item);
+    this.editItems.emit(item);
   }
 
   onDelete(event: Event, item: any) {

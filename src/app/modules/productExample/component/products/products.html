@@ -1,8 +1,21 @@
 <h2 class="text-2xl font-bold mb-4">Productos</h2>
-    <app-table-component
+<p-button class="bg-red-400"
+
+(onClick)="onCreateItem();"
+
+>Crear</p-button>
+<app-table-component
     [items]="products"
     [columns]="columns"
     [showActions]="showActions"
     (confirmDelete)="onConfirmDelete($event)"
-    ></app-table-component>
+    (editItems)="onEditItems($event)"
+></app-table-component>
 
+<app-products-modal
+    [item]="selectedProduct"
+    [visible]="showModal"
+    [isEdit]="isEdit"
+    (close)="showModal = false"
+    (saveProduct)="onSaveItem($event)">
+></app-products-modal>

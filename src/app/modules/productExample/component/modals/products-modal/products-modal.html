@@ -1,0 +1,47 @@
+<p-dialog 
+    [(visible)]="visible" 
+    [modal]="true" 
+    [style]="{ width: '25rem' }" 
+    (onHide)="OnClose()">
+    <ng-template #header>
+        <div class="inline-flex items-center justify-center gap-2">
+            {{ isEdit ? 'Actualizar Producto' : 'Crear Producto' }}
+        </div>
+    </ng-template>
+    <div class="flex items-center gap-4 mb-4">
+        <label for="descripcion" class="font-semibold w-24">Descripción</label>
+        <input 
+            pInputText 
+            id="descripcion" 
+            class="flex-auto" 
+            autocomplete="off" 
+            [(ngModel)]="formData.descripcion"
+            [placeholder]="isEdit ? '' : 'Ingrese una descripción'"
+            />
+    </div>
+    <div class="flex items-center gap-4 mb-2">
+        <label for="precio" class="font-semibold w-24">Precio</label>
+        <input 
+            pInputText 
+            id="precio" 
+            class="flex-auto" 
+            autocomplete="off" 
+            [(ngModel)]="formData.precio"
+            [placeholder]="isEdit ? '' : 'Ingrese un precio'"
+            />
+    </div>
+    <div class="flex items-center gap-4 mb-2">
+        <label for="existencia" class="font-semibold w-24">Existencias</label>
+        <input 
+            pInputText 
+            id="existencia" 
+            class="flex-auto" 
+            autocomplete="off" 
+            [(ngModel)]="formData.existencia"
+            [placeholder]="isEdit ? '' : 'Ingrese la cantidad disponible'"
+            />    </div>
+    <ng-template #footer>
+        <p-button label="Cancel" [text]="true" severity="secondary" (click)="visible = false" />
+        <p-button label="Save" [outlined]="true" severity="secondary" (click)="save()" />
+    </ng-template>
+</p-dialog>

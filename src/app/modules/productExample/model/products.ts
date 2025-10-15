@@ -1,6 +1,6 @@
 export class Products {
 
-    idProducto!: number;
+    idProducto?: number;
     descripcion!: string;
     precio!: number;
     existencia!: number
