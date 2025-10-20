@@ -1,11 +1,13 @@
 import Aura from '@primeng/themes/aura';
 
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http'
+import { KeycloakService } from 'keycloak-angular';
+import { initializeKeycloak } from './config/keycloack/init/keycloak-init';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +25,14 @@ export const appConfig: ApplicationConfig = {
         }
       }
     }),
-    provideHttpClient()
+    provideHttpClient(),
+    KeycloakService,
+    
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
   ]
 };

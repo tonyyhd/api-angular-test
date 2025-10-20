@@ -1,10 +1,10 @@
-
 <p-menubar [model]="items">
     <ng-template #start>
         <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="..." fill="var(--primary-color)" />
         </svg>
     </ng-template>
+
     <ng-template #item let-item let-root="root">
         <a pRipple class="flex items-center p-menubar-item-link">
             <span>{{ item.label }}</span>
@@ -13,10 +13,18 @@
             <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
         </a>
     </ng-template>
+
     <ng-template #end>
-        <div class="flex items-center gap-2">
-            <input type="text" pInputText placeholder="Search" class="w-36" />
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+        <div *ngIf="userService.user$ | async as user" class="flex items-center gap-2">
+            <span>Hola, {{ user.firstName || user.username }}</span>
+
+            <p-button 
+              type="button" 
+              icon="pi pi-sign-out" 
+              label="Logout"
+              class="p-button-sm bg-red-600 text-white hover:bg-red-500 hover:text-white"
+              (click)="userService.logout()">
+            </p-button>
         </div>
     </ng-template>
 </p-menubar>

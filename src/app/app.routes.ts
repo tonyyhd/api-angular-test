@@ -4,6 +4,6 @@ import { PortFolio } from './modules/portFolio/components/port-folio/port-folio'
 
 export const routes: Routes = [
     { path: 'productos', component: ProductsComponent },
-    { path: '', redirectTo: 'productos', pathMatch: 'full' },
+    { path: '', redirectTo: 'portfolio', pathMatch: 'full' },
     { path: 'portfolio', component: PortFolio },
 ];
