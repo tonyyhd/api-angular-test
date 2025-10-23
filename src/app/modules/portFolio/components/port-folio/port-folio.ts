@@ -19,6 +19,5 @@ export class PortFolio implements OnInit{
     this.roles = this.keycloak.getUserRoles();
 
     const token = await this.keycloak.getToken();
-    console.log('JWT payload:', JSON.parse(atob(token.split('.')[1])));
   }
 }

@@ -16,5 +16,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
         silentCheckSsoRedirectUri: '',
       },
       bearerExcludedUrls: ['/assets'],
+      enableBearerInterceptor: true,
+      bearerPrefix: 'Bearer',
     });
 }
