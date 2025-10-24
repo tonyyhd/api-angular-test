@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Products } from '../model/products';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-
-  private Baseurl = "http://localhost:8080/";
+  private Baseurl = environment.apiUrl;
   
   constructor(
     private clienteHttp: HttpClient

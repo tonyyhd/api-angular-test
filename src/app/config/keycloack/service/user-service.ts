@@ -21,7 +21,6 @@ export class UserService {
       await this.loadUserProfile();
       this.startTokenRefresh();
     } catch (err) {
-      console.error('Error inicializando usuario Keycloak:', err);
       this.userSubject.next(null);
     }
   }
@@ -44,11 +43,5 @@ export class UserService {
     const refreshInterval = 30;
     interval(refreshInterval * 1000)
       .pipe(switchMap(() => from(this.keycloak.updateToken(refreshInterval))))
-      .subscribe({
-        next: (refreshed) => {
-          if (refreshed) console.log('Token renovado automáticamente');
-        },
-        error: (err) => console.error('Error renovando token', err),
-      });
   }
 }

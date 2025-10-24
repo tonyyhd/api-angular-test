@@ -14,10 +14,6 @@ export class PortFolio implements OnInit{
   constructor(private keycloak: KeycloakService) {}
 
   async ngOnInit() {
-    const profile = await this.keycloak.loadUserProfile();
-    this.username = profile.username!;
-    this.roles = this.keycloak.getUserRoles();
 
-    const token = await this.keycloak.getToken();
   }
 }
